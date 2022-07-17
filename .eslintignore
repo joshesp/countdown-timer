@@ -1,0 +1,12 @@
+node_modules
+.vscode
+.cache
+.babelrc
+dist
+__mocks__
+__tests__
+jest.config.js
+jest.setup.js
+*.md
+*.yml
+*.json
