@@ -1,8 +1,13 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
-import "./index.css"
+import "./index.scss"
 
 const container = document.getElementById("app")
-const root = createRoot(container!)
-root.render(<App />)
+
+if (container) {
+	const root = createRoot(container)
+	root.render(<App />)
+} else {
+	console.warn("Could't render because dom element doesn't exist.")
+}

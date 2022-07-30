@@ -1,16 +1,28 @@
-$titleColor: #acacac;
+@import "./styles/theme";
+@import "./styles/media-queries";
 
-.app {
-	text-align: center;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
+.full-container {
+	background-image: url(./assets/images/pattern-hills.svg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 1rem;
+	position: relative;
+	background-position-x: -250px;
 
-	.title-app {
-		margin: 12px;
-		color: $titleColor;
+	@include tablet {
+		background-position-x: center;
+	}
+
+	.title {
+		text-align: center;
+		margin-top: 5rem;
+		margin-bottom: 3rem;
+		color: $white;
+		text-transform: uppercase;
+		letter-spacing: 8px;
+		font-size: 1.2rem;
 	}
 }

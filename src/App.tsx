@@ -1,13 +1,15 @@
 import React from "react"
 import "./App.scss"
-import Logo from "./assets/images/workflow.svg"
-import { APP_TITLE } from "./constants/environment"
+
+import Countdown from "./components/Countdown/Countdown"
+import Footer from "./components/Footer/Footer"
 
 const App = () => {
 	return (
-		<div className="app">
-			<img src={Logo} alt={APP_TITLE} width="60" />
-			<h1 className="title-app">{APP_TITLE}</h1>
+		<div className="full-container">
+			<div className="title">We&apos;re launching soon</div>
+			<Countdown />
+			<Footer />
 		</div>
 	)
 }
