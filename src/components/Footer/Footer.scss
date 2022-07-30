@@ -1,0 +1,46 @@
+@import "../../styles/theme";
+
+.footer {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 3rem 1rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	.social-media {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 1rem;
+
+		a {
+			margin-left: 1rem;
+			margin-right: 1rem;
+
+			svg {
+				width: 30px;
+				height: auto;
+				fill: $grayish-blue;
+			}
+
+			&:hover {
+				svg {
+					fill: $soft-red;
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	.attribution {
+		font-size: 11px;
+		text-align: center;
+		color: $grayish-blue;
+
+		a {
+			color: $white;
+		}
+	}
+}
