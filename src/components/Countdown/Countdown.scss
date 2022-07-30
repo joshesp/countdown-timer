@@ -1,0 +1,18 @@
+@import "../../styles/theme";
+
+.countdown {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	width: 100%;
+
+	.flip-clock-wrapper {
+		text-align: center;
+		position: relative;
+		user-select: none;
+		margin: 0;
+		width: 100%;
+	}
+}

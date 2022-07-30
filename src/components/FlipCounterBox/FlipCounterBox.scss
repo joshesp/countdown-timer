@@ -1,0 +1,376 @@
+@import "../../styles/theme";
+@import "../../styles/media-queries";
+
+.flip-wrapper {
+	display: inline-block;
+	text-align: center;
+
+	& + .flip-wrapper {
+		margin-left: 1rem;
+
+		@include tablet {
+			margin-left: 1.5rem;
+		}
+	}
+
+	.flip {
+		position: relative;
+		float: none;
+		list-style: none;
+		width: 70px;
+		height: 65px;
+		line-height: 65px;
+		margin: 0;
+		font-weight: 400;
+		line-height: 65px;
+		box-shadow: none;
+		max-height: 65px;
+		border-radius: 0.35rem;
+		box-shadow: 0px 8px 1px $dark;
+
+		@include tablet {
+			width: 120px;
+			height: 115px;
+			line-height: 115px;
+			max-height: 115px;
+		}
+
+		li {
+			z-index: 1;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			text-decoration: none !important;
+			line-height: 65px;
+
+			@include tablet {
+				line-height: 115px;
+			}
+
+			&:first-child {
+				z-index: 2;
+			}
+
+			a {
+				display: block;
+				height: 100%;
+				-webkit-perspective: 200px;
+				perspective: 200px;
+				margin: 0 !important;
+				overflow: visible !important;
+				cursor: default !important;
+
+				div {
+					z-index: 1;
+					position: absolute;
+					left: 0;
+					width: 100%;
+					height: 50%;
+					font-size: 80px;
+					overflow: hidden;
+					outline: 1px solid transparent;
+
+					.shadow {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						z-index: 2;
+					}
+
+					.counter {
+						position: absolute;
+						left: 0;
+						z-index: 1;
+						width: 100%;
+						height: 200%;
+						text-align: center;
+						border-radius: 0.35rem;
+						color: $soft-red;
+						font-weight: 700;
+						font-size: 2rem;
+						line-height: 65px;
+
+						@include tablet {
+							font-size: 4rem;
+							line-height: 115px;
+						}
+					}
+				}
+
+				.up {
+					transform-origin: 50% 100%;
+					top: 0;
+					border-bottom: 1px solid $darker-blue;
+
+					&:after,
+					&:before {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -5px;
+						width: 10px;
+						height: 10px;
+						border-radius: 100%;
+						z-index: 5;
+					}
+
+					&:before {
+						background: $dark;
+						left: -5px;
+					}
+
+					&:after {
+						right: -5px;
+						background: $dark;
+					}
+
+					.counter {
+						background: $darker-blue;
+						background: linear-gradient(
+							to bottom,
+							$dark-blue 100%,
+							$darker-blue 0%
+						);
+						top: 0;
+					}
+				}
+
+				.down {
+					transform-origin: 50% 0;
+					bottom: 0;
+					border-bottom-left-radius: 6px;
+					border-bottom-right-radius: 6px;
+
+					&:after,
+					&:before {
+						content: "";
+						display: block;
+						position: absolute;
+						top: -5px;
+						width: 10px;
+						height: 10px;
+						border-radius: 100%;
+						z-index: 5;
+					}
+
+					&:before {
+						background: $dark;
+						left: -5px;
+					}
+
+					&:after {
+						right: -5px;
+						background: $dark;
+					}
+
+					.counter {
+						background: $dark-blue;
+						background: linear-gradient(
+							to bottom,
+							$dark-blue 100%,
+							$darker-blue 0%
+						);
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$dark-blue, endColorstr=$darker-blue,GradientType=0 );
+						bottom: 0;
+					}
+				}
+			}
+
+			&.flip-clock-active {
+				z-index: 3;
+			}
+		}
+
+		&.play {
+			.flip-clock-before {
+				z-index: 3;
+
+				.up {
+					z-index: 2;
+					animation: turnoff 0.5s cubic-bezier(0.34, 0.13, 0.93, 0.24) both;
+
+					.shadow {
+						-webkit-animation: show 0.5s linear both;
+						animation: show 0.5s linear both;
+						background: -moz-linear-gradient(
+							top,
+							hsla(234, 17%, 12%, 0.1) 0,
+							$dark 100%
+						);
+						background: -webkit-gradient(
+							linear,
+							left top,
+							left bottom,
+							color-stop(0, hsla(234, 17%, 12%, 0.1)),
+							color-stop(100%, $dark)
+						);
+						background: linear, top, hsla(234, 17%, 12%, 0.1) 0, $dark 100%;
+						background: -ms-linear-gradient(
+							top,
+							hsla(234, 17%, 12%, 0.1) 0,
+							$dark 100%
+						);
+						background: linear, to bottom, hsla(234, 17%, 12%, 0.1) 0,
+							$dark 100%;
+					}
+				}
+
+				.down {
+					.shadow {
+						-webkit-animation: show 0.5s linear both;
+						animation: show 0.5s linear both;
+						background: -moz-linear-gradient(
+							top,
+							$dark 0,
+							hsla(234, 17%, 12%, 0.1) 100%
+						);
+						background: -webkit-gradient(
+							linear,
+							left top,
+							left bottom,
+							color-stop(0, $dark),
+							color-stop(100%, hsla(234, 17%, 12%, 0.1))
+						);
+						background: linear, top, $dark 0, hsla(234, 17%, 12%, 0.1) 100%;
+						background: -ms-linear-gradient(
+							top,
+							$dark 0,
+							hsla(234, 17%, 12%, 0.1) 100%
+						);
+						background: linear, to bottom, $dark 0,
+							hsla(234, 17%, 12%, 0.1) 100%;
+					}
+				}
+			}
+
+			.flip-clock-active {
+				-webkit-animation: zindex 0.5s 0.5s linear both;
+				animation: zindex 0.5s 0.5s linear both;
+				z-index: 5;
+
+				.up {
+					.shadow {
+						background: -moz-linear-gradient(
+							top,
+							hsla(234, 17%, 12%, 0.1) 0,
+							#000 100%
+						);
+						background: -webkit-gradient(
+							linear,
+							left top,
+							left bottom,
+							color-stop(0, hsla(234, 17%, 12%, 0.1)),
+							color-stop(100%, #000)
+						);
+						background: linear, top, hsla(234, 17%, 12%, 0.1) 0, #000 100%;
+						background: -ms-linear-gradient(
+							top,
+							hsla(234, 17%, 12%, 0.1) 0,
+							#000 100%
+						);
+						background: linear, to bottom, hsla(234, 17%, 12%, 0.1) 0, #000 100%;
+						-webkit-animation: hide 0.5s 0.3s linear both;
+						animation: hide 0.5s 0.3s linear both;
+					}
+				}
+
+				.down {
+					z-index: 2;
+					animation: turnon 0.3s 0.5s linear both;
+
+					.shadow {
+						background: -moz-linear-gradient(
+							top,
+							#000 0,
+							hsla(234, 17%, 12%, 0.1) 100%
+						);
+						background: -webkit-gradient(
+							linear,
+							left top,
+							left bottom,
+							color-stop(0, #000),
+							color-stop(100%, hsla(234, 17%, 12%, 0.1))
+						);
+						background: linear, top, #000 0, hsla(234, 17%, 12%, 0.1) 100%;
+						background: -ms-linear-gradient(
+							top,
+							#000 0,
+							hsla(234, 17%, 12%, 0.1) 100%
+						);
+						background: linear, to bottom, #000 0, hsla(234, 17%, 12%, 0.1) 100%;
+						-webkit-animation: hide 0.5s 0.3s linear both;
+						animation: hide 0.5s 0.2s linear both;
+					}
+				}
+			}
+		}
+	}
+
+	.flip-clock-label {
+		display: block;
+		margin-top: 1.5em;
+		font-size: 0.6rem;
+		letter-spacing: 4px;
+		color: $grayish-blue;
+		text-transform: uppercase;
+
+		@include tablet {
+			font-size: 0.8rem;
+		}
+	}
+}
+
+/*** Animations ***/
+@keyframes zindex {
+	0% {
+		z-index: 2;
+	}
+	20% {
+		z-index: 3;
+	}
+	100% {
+		z-index: 4;
+	}
+}
+
+@keyframes turnon {
+	0% {
+		-webkit-transform: rotateX(91deg);
+		transform: rotateX(91deg);
+	}
+	100% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+	}
+}
+
+@keyframes turnoff {
+	0% {
+		-webkit-transform: rotateX(0deg);
+		transform: rotateX(0deg);
+	}
+	100% {
+		-webkit-transform: rotateX(-90deg);
+		transform: rotateX(-90deg);
+	}
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
