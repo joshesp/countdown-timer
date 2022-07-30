@@ -4,7 +4,7 @@ import App from "../src/App";
 
 describe("App", () => {
 	test("should equal to snapshot", () => {
-		const {container, getByText } = render(<App />)
+		const {container } = render(<App />)
 		expect(container).toMatchSnapshot()
 	})
 })
